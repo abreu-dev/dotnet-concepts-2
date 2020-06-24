@@ -30,6 +30,11 @@ namespace Haze.API.Controllers.Authentication
             _fulanoQuery = fulanoQuery;
         }
 
+        /// <summary>
+        /// Add new Fulano
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] FulanoModel model)
         {
@@ -39,6 +44,11 @@ namespace Haze.API.Controllers.Authentication
             return Response();
         }
 
+        /// <summary>
+        /// Update Fulano
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPut]
         public async Task<IActionResult> Put([FromBody] FulanoModel model)
         {
@@ -48,6 +58,11 @@ namespace Haze.API.Controllers.Authentication
             return Response();
         }
 
+        /// <summary>
+        /// Deletes Fulano
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {
@@ -57,6 +72,11 @@ namespace Haze.API.Controllers.Authentication
             return Response();
         }
 
+        /// <summary>
+        /// Get Fulano
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id:guid}")]
         public FulanoModel GetById(Guid id)
         {
@@ -65,6 +85,10 @@ namespace Haze.API.Controllers.Authentication
             return _fulanoQuery.GetById(id);
         }
 
+        /// <summary>
+        /// Get All Fulanos
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<FulanoModel> GetAll()
         {
@@ -73,6 +97,11 @@ namespace Haze.API.Controllers.Authentication
             return _fulanoQuery.GetAll();
         }
 
+        /// <summary>
+        /// Search Fulano
+        /// </summary>
+        /// <param name="searchModel"></param>
+        /// <returns></returns>
         [HttpPost("search")]
         public IEnumerable<FulanoModel> Search([FromBody] SearchModel searchModel)
         {

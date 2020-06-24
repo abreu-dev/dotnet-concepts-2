@@ -46,7 +46,8 @@ namespace Haze.Core.Infra.Data.CacheRepositories
             {
                 Id = dbEntity.Id,
                 Tenant = Tenant,
-                Data = model.ToJson()
+                Data = model.ToJson(),
+                Date = DateTime.Now
             };
 
             await _dbSet.AddAsync(cacheEntity);
