@@ -27,7 +27,7 @@ namespace Haze.API.Controllers.Authentication
         {
             System.Console.WriteLine($"UserController/Login - UserAgent: {HttpContext.Request.Headers["User-Agent"]} - IP: {HttpContext.Connection.RemoteIpAddress.MapToIPv4()}");
 
-            var result = _userAppService.Login(model);
+            var result = await _userAppService.Login(model);
 
             if (result is null)
             {

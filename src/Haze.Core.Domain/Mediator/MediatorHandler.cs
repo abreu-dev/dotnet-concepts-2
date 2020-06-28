@@ -29,5 +29,10 @@ namespace Haze.Core.Domain.Mediator
         {
             await _mediator.Publish(notification);
         }
+
+        public async Task RaiseEventAsync<T>(T notification) where T : Event
+        {
+            await _mediator.Publish(notification);
+        }
     }
 }

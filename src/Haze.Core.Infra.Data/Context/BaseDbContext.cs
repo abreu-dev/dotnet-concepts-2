@@ -25,6 +25,7 @@ namespace Haze.Core.Infra.Data.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
+            optionsBuilder.EnableSensitiveDataLogging();
             var connectionString =
                 $"Server={ConnectionInfo.Server};Database={_databaseName};User Id={ConnectionInfo.Username};Password={ConnectionInfo.Password};";
             optionsBuilder.UseSqlServer(connectionString);

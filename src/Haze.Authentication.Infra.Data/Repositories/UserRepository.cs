@@ -16,7 +16,7 @@ namespace Haze.Authentication.Infra.Data.Repositories
         {
             return Query().Where(u => u.Username == username)
                           .AsEnumerable()
-                          .Where(u => PasswordHashService.Verify(inputPassword, u.Password)).FirstOrDefault();
+                          .FirstOrDefault(u => PasswordHashService.Verify(inputPassword, u.Password));
         }
 
         public bool UserExists(string username)

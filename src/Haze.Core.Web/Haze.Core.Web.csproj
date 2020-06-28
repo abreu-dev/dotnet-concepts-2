@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Haze.Core.Domain\Haze.Core.Domain.csproj" />
+    <ProjectReference Include="..\Haze.Core.Infra.Data\Haze.Core.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,6 +3,7 @@ using Haze.Authentication.Application.Interfaces;
 using Haze.Authentication.Caching.Models;
 using Haze.Authentication.Domain.Commands.UserCommands;
 using Haze.Authentication.Domain.Entities;
+using Haze.Authentication.Domain.Events.UserEvents;
 using Haze.Authentication.Domain.Repositories;
 using Haze.Authentication.Web.JwtBearer;
 using Haze.Authentication.Web.PasswordHashing;
@@ -122,15 +123,23 @@ namespace Haze.Authentication.Application.Services
             await _mediatorHandler.SendCommandAsync(command);
         }
 
-        public string Login(UserModel model)
+        public async Task<string> Login(UserModel model)
         {
-            var dbEntity = _userRepository.GetByCredentials(model.Username, model.Password);
-
-            if (dbEntity == null)
+            if (!_userRepository.UserExists(model.Username))
             {
                 return null;
             }
 
+            var dbEntity = _userRepository.GetByCredentials(model.Username, model.Password);
+
+            if (dbEntity == null)
+            {
+                await _mediatorHandler.RaiseEventAsync(new LoginFailedAttemptEvent(model.Username));
+                return null;
+            }
+
+            dbEntity.ResetFailedAttempts();
+            await _userRepository.Uow.CommitAsync();
             return JwtBearerTokenService.GenerateToken(_mapper.Map<User>(model));
         }
     }

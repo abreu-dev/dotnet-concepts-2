@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Haze.Core.Domain\Haze.Core.Domain.csproj" />
+    <ProjectReference Include="..\Haze.Core.Web\Haze.Core.Web.csproj" />
   </ItemGroup>
 
 </Project>

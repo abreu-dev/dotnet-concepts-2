@@ -11,5 +11,6 @@
         public static UserMessage ErroPersistenciaDados => new UserMessage("Erro ao persistir no banco.");
         public static UserMessage ValorNaoEncontradoO => new UserMessage("O {0} informado não foi encontrado.");
         public static UserMessage ValorNaoEncontradoA => new UserMessage("A {0} informada não foi encontrada.");
+        public static UserMessage ValorDeveSerIgualMaiorQue => new UserMessage("O {0} deve ser igual ou maior que {1}.");
     }
 }

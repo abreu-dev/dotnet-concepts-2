@@ -3,9 +3,9 @@ using System;
 
 namespace Haze.Anything.Domain.Events.FulanoEvents
 {
-    public class FulanoAddedEvent : DomainEvent
+    public class FulanoUpdatedEvent : DomainEvent
     {
-        public FulanoAddedEvent(Guid aggregateId)
+        public FulanoUpdatedEvent(Guid aggregateId)
             : base(aggregateId) { }
     }
 }

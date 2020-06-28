@@ -12,5 +12,7 @@ namespace Haze.Core.Domain.Mediator
         Task RaiseDomainNotificationAsync<T>(T notification) where T : DomainNotification;
 
         Task RaiseDomainEventAsync<T>(T notification) where T : DomainEvent;
+
+        Task RaiseEventAsync<T>(T notification) where T : Event;
     }
 }

@@ -17,6 +17,12 @@ namespace Haze.Anything.Infra.Data.Context
                    tenantAccessor.GetTenant())
         { }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AnythingDataDbContext).Assembly);
+            base.OnModelCreating(modelBuilder);
+        }
+
         public class DbContextFactory : DesignTimeDbContextFactory<AnythingDataDbContext>
         {
             protected override AnythingDataDbContext Create()

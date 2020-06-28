@@ -2,6 +2,8 @@
 using Haze.Authentication.Application.Services;
 using Haze.Authentication.Domain.CommandHandlers;
 using Haze.Authentication.Domain.Commands.UserCommands;
+using Haze.Authentication.Domain.EventHandler;
+using Haze.Authentication.Domain.Events.UserEvents;
 using Haze.Authentication.Domain.Repositories;
 using Haze.Authentication.Infra.Data.Context;
 using Haze.Authentication.Infra.Data.Repositories;
@@ -39,9 +41,12 @@ namespace Haze.Authentication.Infra
             // User
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserAppService, UserAppService>();
+
             services.AddScoped<IRequestHandler<AddUserCommand, bool>, UserCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateUserCommand, bool>, UserCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveUserCommand, bool>, UserCommandHandler>();
+
+            services.AddScoped<INotificationHandler<LoginFailedAttemptEvent>, UserEventHandler>();
 
             // Context
             services.AddDbContext<AuthenticationDataDbContext>();
