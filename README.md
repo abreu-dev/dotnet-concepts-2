@@ -1,18 +1,18 @@
-O projeto Haze tem objetivo de servir como base para diversos tópicos que podem ser aplicados em uma API.
+Haze is a project for study proposes, where i implement some funcionalities like:
 
-- Autenticação com JwtBearer
+- JwtBearer Authentication
 - CQRS
-- Banco de leitura e gravação
+- Data and Cache Databases
 - MediatR
-- Eventos
+- Events
 - Multitenant
-- Injeção de dependência por contexto
-- Endpoint pra Search
+- IoC
+- Search Endpoint
 - AutoMapper
 - FluentValidation
 - UserMessages
-- Variáveis de ambiente
-- Métodos de extensão
-- Hash de senha
-- Teste unitário
+- Environment Variables
+- Extension Methods
+- PasswordHasher
+- UnitTests
 - Swagger
